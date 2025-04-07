@@ -1,25 +1,15 @@
 import sys
+import math
 
 input = sys.stdin.readline
 
-t = int(input())
+m, n = map(int, input().split())
 
-data = []
-for _ in range(t):
-    data.append(list(map(int, input().split())))
+decimal = set(i for i in range(m, n + 1) if i != 1)
 
-def gcd(a, b):
-    while b != 0:
-        r = a % b
-        a = b
-        b = r
-    return a
-
-def lcm(a, b):
-    return int((a * b) / gcd(a, b))
-
-for a, b in data:
-    if a < b:
-        print(lcm(a, b))
-    else:
-        print(lcm(b, a))
+for e in range(2, int(math.sqrt(n) + 1)):
+    for d in range(e * e, n + 1, e):
+        decimal.discard(d)
+            
+for d in decimal:
+    print(d)
