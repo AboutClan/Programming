@@ -7,7 +7,7 @@ repeat = int(input())
 _list = []
 
 for _ in range(repeat):
-    a = input().strip()
+    a = input()
     if a in _list:
         continue
     _list.append(a)
